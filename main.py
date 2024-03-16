@@ -9,16 +9,13 @@ pygame.display.set_caption("pong")
 #players, scores and initialising ball as well as rectangles
 play1 = pygame.Rect((5,200,10,150))
 play2 = pygame.Rect((775,200,10,150))
-score1 = 0
-score2 = 0
+score1, score2 = 0, 0
 bong = pygame.Rect((385, 275, 30, 30))
 xsped = random.randint(4,8)
 ysped = random.randint(4,8)
-glock = pygame.time.Clock()
-run = True
-while run:
+while True:
     #making game run at 60fps
-    glock.tick(60)
+    pygame.time.Clock().tick(60)
     screen.fill((132,132,132))
     #monitoring ball speed
     bong.x += xsped
@@ -69,6 +66,5 @@ while run:
     for event in pygame.event.get():
         #making pygame quit
         if event.type == pygame.QUIT or score1 >= 10 or score2 >= 10:
-            run = False
+            break
     pygame.display.update()
-pygame.quit()
